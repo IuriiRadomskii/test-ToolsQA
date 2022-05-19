@@ -1,5 +1,6 @@
 package ru.radomskii.steps;
 
+import io.qameta.allure.Step;
 import java.time.Duration;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
@@ -14,6 +15,7 @@ public class ModalStep extends BaseStep {
         super(driver);
     }
 
+    @Step("Open provided url")
     public void open(String url) {
         log.info("Opening: " + url);
         driver.get(url);
@@ -21,6 +23,7 @@ public class ModalStep extends BaseStep {
             .until(ExpectedConditions.titleIs("ToolsQA"));
     }
 
+    @Step("Login as User")
     public void loginAs(User user) {
         log.info("Logging user: " + user.getUsername());
         booksPage.loginAs(user);

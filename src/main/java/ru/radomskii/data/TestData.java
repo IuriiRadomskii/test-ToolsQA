@@ -4,7 +4,7 @@ import java.util.HashMap;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class TestData implements IData{
+public class TestData implements IData {
 
     public final static String USER = "USER";
     public final static String BASE_URL = "BASE_URL";
