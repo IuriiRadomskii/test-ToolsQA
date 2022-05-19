@@ -16,8 +16,11 @@
     <selenium.version>4.1.4</selenium.version>
     <manager.version>5.1.1</manager.version>
     <testng.version>7.6.0</testng.version>
-    <allure.version>2.18.0</allure.version>
+    <allure-testng.version>2.18.0</allure-testng.version>
+    <allure-maven.version>2.11.2</allure-maven.version>
     <slf4j.version>2.0.0-alpha7</slf4j.version>
+    <logback.version>1.3.0-alpha15</logback.version>
+    <lombok.version>1.18.24</lombok.version>
   </properties>
 
   <dependencies>
@@ -44,7 +47,8 @@
     <dependency>
       <groupId>io.qameta.allure</groupId>
       <artifactId>allure-testng</artifactId>
-      <version>${allure.version}</version>
+      <version>${allure-testng.version}</version>
+      <scope>test</scope>
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
     <dependency>
@@ -59,7 +63,33 @@
       <artifactId>slf4j-api</artifactId>
       <version>${slf4j.version}</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>${logback.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${lombok.version}</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
+
+  <profiles>
+    <profile>
+      <id>test-suite</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <suite.file>src/test/resources/testng.xml</suite.file>
+      </properties>
+    </profile>
+  </profiles>
 
   <build>
     <plugins>
@@ -69,7 +99,7 @@
         <version>3.0.0-M6</version>
         <configuration>
           <suiteXmlFiles>
-            <suiteXmlFile>${suite.name.xml}</suiteXmlFile>
+            <suiteXmlFile>${suite.file}</suiteXmlFile>
           </suiteXmlFiles>
           <testFailureIgnore>true</testFailureIgnore>
           <argLine>
@@ -87,4 +117,18 @@
       </plugin>
     </plugins>
   </build>
+
+  <reporting>
+    <excludeDefaults>true</excludeDefaults>
+    <plugins>
+      <plugin>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-maven</artifactId>
+        <version>${allure-maven.version}</version>
+        <configuration>
+          <reportVersion>${allure-testng.version}</reportVersion>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
 </project>

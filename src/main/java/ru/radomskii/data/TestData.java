@@ -1,9 +1,30 @@
 package ru.radomskii.data;
 
-import ru.radomskii.entities.User;
+import java.util.HashMap;
+import lombok.extern.slf4j.Slf4j;
 
-public class TestData {
+@Slf4j
+public class TestData implements IData{
 
-    private final User testUser = null;
-    private final String BASE_URL = null;
+    public final static String USER = "USER";
+    public final static String BASE_URL = "BASE_URL";
+
+    private HashMap<String, Object> testData = new HashMap<>();
+
+    @Override
+    public void addTestData(String key, Object value) {
+        log.info("Added test data: key {}: value {}", key, value.toString());
+        testData.put(key, value);
+    }
+
+    @Override
+    public <T> T getTestData(String key, Class<T> clazz) {
+        log.info("Get test data by key {}", key);
+        return (T) testData.get(key);
+    }
+
+    @Override
+    public void deleteTestDataByKey(String key) {
+        testData.remove(key);
+    }
 }

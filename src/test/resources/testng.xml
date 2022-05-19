@@ -1,11 +1,16 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Native mobile testing Suite">
+<suite name="some suite name">
   <parameter name="username" value="IuriiBurii"/>
   <parameter name="password" value="IuriiBurii1234@!"/>
   <parameter name="baseUrl" value="https://demoqa.com/books"/>
-  <test name="Test tests">
+  <test name="Profile test">
     <classes>
-      <class name=""/>
+      <class name="ru.radomskii.test.ProfileTest"/>
     </classes>
   </test>
+  <!--<test name="Bookstore test">
+    <classes>
+      <class name="ru.radomskii.test.ProfileTest"/>
+    </classes>
+  </test>-->
 </suite>
