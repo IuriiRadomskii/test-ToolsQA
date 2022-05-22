@@ -8,9 +8,9 @@
       <class name="ru.radomskii.test.ProfileTest"/>
     </classes>
   </test>
-  <!--<test name="Bookstore test">
+  <test name="BookStore test">
     <classes>
-      <class name="ru.radomskii.test.ProfileTest"/>
+      <class name="ru.radomskii.test.BookStoreTest"/>
     </classes>
-  </test>-->
+  </test>
 </suite>

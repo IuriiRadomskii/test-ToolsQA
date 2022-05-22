@@ -9,9 +9,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.radomskii.entities.User;
 
 @Slf4j
-public class ModalStep extends BaseStep {
+public class ModelStep extends BaseStep {
 
-    public ModalStep(WebDriver driver) {
+    public ModelStep(WebDriver driver) {
         super(driver);
     }
 
@@ -25,7 +25,22 @@ public class ModalStep extends BaseStep {
 
     @Step("Login as User")
     public void loginAs(User user) {
-        log.info("Logging user: " + user.getUsername());
+        log.info("Logging as {}", user.getUsername());
         booksPage.loginAs(user);
+    }
+
+    @Step("Choose {option} books on page in dropdown menu")
+    public void chooseNumberOfBooksOnPage(int option) {
+        booksPage.chooseNumberOfBooksOnPage(option);
+    }
+
+    @Step("Open first page in presented book list")
+    public void goToFirstPage() {
+        booksPage.goToFirstPage();
+    }
+
+    @Step("Open last page in presented book list")
+    public void goToLastPage() {
+        booksPage.goToLastPage();
     }
 }
