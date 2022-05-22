@@ -24,7 +24,6 @@ public class ProfileTest extends BaseTest {
         tearDownDriver();
     }
 
-
     @Description("Verify login functionality")
     @Test
     public void testProfile() {

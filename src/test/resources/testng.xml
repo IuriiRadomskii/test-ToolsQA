@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Test test suite">
-  <parameter name="username" value="IuriiBurii"/>
-  <parameter name="password" value="IuriiBurii1234@!"/>
+  <parameter name="username" value="Foo"/>
+  <parameter name="password" value="FooBar1@!"/>
   <parameter name="baseUrl" value="https://demoqa.com/books"/>
   <test name="Profile test">
     <classes>

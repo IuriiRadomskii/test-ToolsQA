@@ -9,7 +9,6 @@ public class BookStoreTestDataProvider {
         return new Object[][] {
             {"Git", true},
             {"Richard", true},
-            {"No Starch", true},
             {"Abracadabra", false},
             {"10", false}
         };
@@ -18,8 +17,7 @@ public class BookStoreTestDataProvider {
     @DataProvider(name = "Rows on page display options")
     public static Object[][] getBookNumber() {
         return new Object[][] {
-            {new int[]{5, 10, 20, 25, 50, 100}}
+            {new int[] {5, 10, 20, 25, 50, 100}}
         };
     }
-
 }

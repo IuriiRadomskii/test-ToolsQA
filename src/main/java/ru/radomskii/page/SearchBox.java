@@ -66,6 +66,7 @@ public class SearchBox extends AbstractPage {
     }
 
     public void chooseOption(int number) {
+        log.info("Choose {} pages on presented book list", number);
         if (!(number == 5 || number == 10 || number == 20 || number == 25 || number == 50 || number == 100)) {
             throw new IllegalArgumentException(String.format("Illegal option value %d", number));
         }
@@ -78,14 +79,6 @@ public class SearchBox extends AbstractPage {
 
     public int getRowsNumber() {
         return searchRows.size();
-    }
-
-    public void openFirstPage() {
-        while (!(new WebDriverWait(driver, Duration.ofSeconds(4L))
-            .until(driver1 -> driver1.findElement(jumpToPageInput))
-            .getAttribute("value").equals(Integer.toString(1)))) {
-            click(previousButton);
-        }
     }
 
     public boolean previousButtonClickability() {
@@ -108,8 +101,17 @@ public class SearchBox extends AbstractPage {
         }
     }
 
+    public void openFirstPage() {
+        log.info("Open first page on presented booklist");
+        while (!(new WebDriverWait(driver, Duration.ofSeconds(4L))
+            .until(driver1 -> driver1.findElement(jumpToPageInput))
+            .getAttribute("value").equals(Integer.toString(1)))) {
+            click(previousButton);
+        }
+    }
+
     public void openLastPage() {
-        log.info(driver.findElement(totalPages).getText());
+        log.info("Open last page on presented booklist");
         while (!(new WebDriverWait(driver, Duration.ofSeconds(4L))
             .until(driver1 -> driver1.findElement(jumpToPageInput)).getAttribute("value")
             .equals(driver.findElement(totalPages).getText()))) {

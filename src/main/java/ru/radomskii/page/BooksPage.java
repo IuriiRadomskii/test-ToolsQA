@@ -1,6 +1,7 @@
 package ru.radomskii.page;
 
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import ru.radomskii.entities.User;
 
 @Getter
+@Slf4j
 public class BooksPage extends AbstractPage {
 
     private By loginButton = By.cssSelector("#login");
@@ -29,6 +31,7 @@ public class BooksPage extends AbstractPage {
     }
 
     public void loginAs(User user) {
+        log.info("Logging as {}", user.getUsername());
         click(loginButton);
         userNameInput.sendKeys(user.getUsername());
         passwordInput.sendKeys(user.getPassword());
@@ -54,7 +57,6 @@ public class BooksPage extends AbstractPage {
     public void goToLastPage() {
         new SearchBox(driver).openLastPage();
     }
-
 
     public boolean isPreviousButtonClickable() {
         return new SearchBox(driver).previousButtonClickability();

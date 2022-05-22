@@ -10,7 +10,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import ru.radomskii.data.IData;
 import ru.radomskii.data.TestData;

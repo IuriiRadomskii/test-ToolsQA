@@ -25,7 +25,6 @@ public class ModelStep extends BaseStep {
 
     @Step("Login as User")
     public void loginAs(User user) {
-        log.info("Logging as {}", user.getUsername());
         booksPage.loginAs(user);
     }
 
